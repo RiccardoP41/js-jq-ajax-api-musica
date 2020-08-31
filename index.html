@@ -15,6 +15,13 @@
             </div>
         </header>
 
+        <select class="scelta" name="">
+            <option value="All" class="selezione">All</option>
+            <option value="Pop" class="selezione">Pop</option>
+            <option value="Rock" class="selezione">Rock</option>
+            <option value="Metal" class="selezione">Metal</option>
+            <option value="Jazz" class="selezione">Jazz</option>
+        </select>
         <div class="cds-container container">
             <!-- Disco ad esempio -->
             <!-- <div class="cd">
@@ -26,7 +33,7 @@
         </div>
 
         <script id="entry-template" type="text/x-handlebars-template">
-            <div class="cd">
+            <div class="cd {{genre}} ">
                 <img src="{{poster}}" alt="">
                 <h3>{{title}}</h3>
                 <span class="author">{{author}}</span>

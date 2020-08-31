@@ -9,21 +9,31 @@
 
 
 $(document).ready(function () {
-    $.ajax({
-    url: "https://flynn.boolean.careers/exercises/api/array/music",
-    method: "GET",
-    success: function (data) {
-	  var response = data.response;
-	  var source = $('#entry-template').html();
-	  var template = Handlebars.compile(source);
-	  for (var i=0; i< response.length; i++){
-		 var disco = template(response[i]);
-		 $('.cds-container').append(disco);
-	  }
-	},
-    error: function () {
-      alert("errore impossibile caricare");
-    },
-  });
+    $.ajax(
+        {
+            url: "https://flynn.boolean.careers/exercises/api/array/music",
+            method: "GET",
+            success: function (risposta) {
+	               var response = risposta.response;
+	               var source = $('#entry-template').html();
+	               var template = Handlebars.compile(source);
+	               for (var i = 0; i < response.length; i++){
+		               var disco = template(response[i]);
+		               $('.cds-container').append(disco);
+	                }
+	        },
+            error: function () {
+                alert("errore impossibile caricare");
+            }
+        });
 
+        $(".scelta option").click(function(){
+            var genere = $(this).val();
+            if (genere == "All") {
+                $(".cd").show();
+            } else {
+                $(".cd").hide();
+                $(".cd." + genere).show();
+            }
+        });
 });
